@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #fff;
+    color: #2c3e50;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+nav {
+    background: #2c3e50;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #3498db;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.logo-img {
+    height: 45px;
+}
+
+.menu-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+.menu-links a:hover {
+    color: #3498db;
+}
+
+
+.hero-section {
+    height: calc(100vh - 80px);
+    background: url('foto/ChatGPT\ Image\ 23\ Nis\ 2026\ 16_47_15.png') center/cover fixed no-repeat;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-text {
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+    max-width: 900px;
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-text p {
+    font-size: 1.3rem;
+    margin-bottom: 35px;
+    opacity: 0.9;
+}
+
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background: #3498db;
+    color: #fff !important;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+    border: 2px solid #3498db;
+}
+
+.btn:hover {
+    background: #2c3e50;
+    border-color: #2c3e50;
+    transform: translateY(-3px);
+}
+
+.btn.outline {
+    background: transparent;
+    border-color: #fff;
+}
+
+.btn.outline:hover {
+    background: #fff;
+    color: #2c3e50 !important;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 5%;
+}
+
+.appointment-card {
+    display: flex;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.appointment-side-info {
+    flex: 1;
+    background: #2c3e50;
+    color: #fff;
+    padding: 40px;
+}
+
+.appointment-form-area {
+    flex: 2;
+    padding: 40px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #3498db;
+}
+
+
+footer {
+    background: #1a252f;
+    color: #fff;
+    padding: 70px 5% 30px;
+    margin-top: 50px;
+    border-top: 4px solid #3498db;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: #3498db;
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+    line-height: 2;
+}
+
+.footer-section a:hover {
+    color: #3498db;
+    opacity: 1;
+}
+
+.footer-form input,
+.footer-form textarea {
+    background: #2c3e50;
+    border: none;
+    color: #fff;
+}
+
+.footer-form button {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .appointment-card {
+        flex-direction: column;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
