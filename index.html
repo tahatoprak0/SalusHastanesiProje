@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salus Hastanesi | Anasayfa</title>
+    <link rel="stylesheet" href="./Style.css/common.css">
+    <link rel="stylesheet" href="./Style.css/index.css">
+</head>
+
+<body>
+    <div id="loading-bar" role="progressbar" aria-label="Sayfa içeriği yükleniyor"></div>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><img src="./photo/ChatGPT Image 23 Nis 2026 17_05_33.png" alt="Logo" class="logo-img">
+                Salus Hastanesi</div>
+            <div class="menu-links">
+                <a href="./index.html">Ana Sayfa</a>
+                <a href="./html/poliklinikler.html">Poliklinikler</a>
+                <a href="./html/doktorlar.html">Doktorlar</a>
+                <a href="./html/randevu.html" class="btn" style="padding: 10px 20px">Randevu Al</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <header class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-text">
+                <h1>SAĞLIĞINIZ BİZİM İÇİN ÖNEMLİ</h1>
+                <div class="hero-buttons">
+                    <a href="./html/randevu.html" class="btn">Hemen Randevu Al</a>
+                    <a href="./html/poliklinikler.html" class="btn outline">Poliklinikler</a>
+                </div>
+            </div>
+        </header>
+
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>İletişim</h3>
+                    <p><strong>Adres:</strong> Yenişehir Mah. Sivas Cumhuriyet Üni. Yanı, Sivas</p>
+                    <p><strong>Telefon:</strong> 0(346) 219 10 10</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Hızlı Menü</h3>
+                    <ul class="footer-links">
+                        <li><a href="./index.html">Ana Sayfa</a></li>
+                        <li><a href="./html/poliklinikler.html">Poliklinikler</a></li>
+                        <li><a href="./html/randevu.html">Randevu Al</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section feedback-area">
+                    <h3>Şikayet ve Öneri</h3>
+                    <form id="footerFeedbackForm">
+                        <input type="email" id="fbEmail" placeholder="E-posta Adresiniz" required>
+                        <textarea id="fbMessage" rows="4" placeholder="Mesajınız..." required></textarea>
+                        <button type="submit" class="btn-footer">Gönder</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Salus Hastanesi - Tüm Hakları Saklıdır.</p>
+            </div>
+        </footer>
+    </main>
+
+    <div id="custom-popup" class="popup-hidden">
+        <div class="popup-content">
+            <p>⚠️ Bilgi Güvenliği</p>
+            <span>İçerik kopyalamak yasaktır.</span>
+            <button onclick="closePopup()">Anladım</button>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
