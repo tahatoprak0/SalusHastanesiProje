@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Poliklinikler | Salus Hastanesi</title>
+    <link rel="stylesheet" href="../Style.css/common.css">
+    <link rel="stylesheet" href="../Style.css/tables.css">
+</head>
+
+<body>
+    <div id="loading-bar" role="progressbar" aria-label="Sayfa içeriği yükleniyor"> </div>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><img src="../photo/ChatGPT Image 23 Nis 2026 17_05_33.png" alt="Logo" class="logo-img">
+                Salus Hastanesi</div>
+            <div class="menu-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="poliklinikler.html">Poliklinikler</a>
+                <a href="doktorlar.html">Doktorlar</a>
+                <a href="randevu.html" class="btn" style="padding: 10px 20px">Randevu Al</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2>Tüm Polikliniklerimiz</h2>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Bölüm Adı</th>
+                    <th>Açıklama</th>
+                    <th>İşlem</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Göz Hastalıkları</strong></td>
+                    <td>Lazer ve katarakt cerrahisi uzmanlığı.</td>
+                    <td><a href="doktorlar.html?bolum=göz" class="table-link">Doktorları Listele</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Kardiyoloji</strong></td>
+                    <td>Kalp ve damar sağlığı merkezi.</td>
+                    <td><a href="doktorlar.html?bolum=kardiyo" class="table-link">Doktorları Listele</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Nöroloji</strong></td>
+                    <td>sinir sistemi hastalıklarıyla ilgilenir.</td>
+                    <td><a href="doktorlar.html?bolum=Nöroloji" class="table-link">Doktorları Listele</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Dahiliye</strong></td>
+                    <td>yetişkinlerde görülen hastalıkların teşhis ve tedavisini yapar.</td>
+                    <td><a href="doktorlar.html?bolum=Dahiliye" class="table-link">Doktorları Listele</a></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div id="custom-popup" class="popup-hidden">
+        <div class="popup-content">
+            <p>⚠️ Salus Hastanesi Bilgi Güvenliği Sistemi</p>
+            <span>Bu sitedeki içerikler kopyalanamaz.</span>
+            <button onclick="closePopup()">Anladım</button>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

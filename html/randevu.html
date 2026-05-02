@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randevu Al | Salus Hastanesi</title>
+    <link rel="stylesheet" href="../Style.css/common.css">
+    <link rel="stylesheet" href="../Style.css/appointment.css">
+</head>
+
+<body>
+    <div id="loading-bar" role="progressbar" aria-label="Sayfa içeriği yükleniyor"> </div>
+    <nav>
+        <div class="nav-container">
+            <div class="logo"><img src="../photo/ChatGPT Image 23 Nis 2026 17_05_33.png" alt="Logo" class="logo-img">
+                Salus Hastanesi</div>
+            <div class="menu-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="poliklinikler.html">Poliklinikler</a>
+                <a href="doktorlar.html">Doktorlar</a>
+                <a href="randevu.html" class="btn" style="padding: 10px 20px">Randevu Al</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="appointment-card">
+            <h2>Online Randevu Sistemi</h2>
+            <p>Lütfen randevu bilgilerinizi seçiniz (Maksimum 30 gün sonrası).</p>
+            <br>
+            <div class="form-area">
+                <form id="appointmentForm" aria-label="Hastane Randevu Kayıt Formu">
+                    <input type="text" id="tc" placeholder="TC Kimlik No"
+                        aria-label="11 haneli T C kimlik numaranızı giriniz" maxlength="11" required
+                        pattern="[0-9]{11}">
+
+                    <select id="polySelect" aria-label="Lütfen muayene olmak istediğiniz polikliniği seçiniz" required>
+                        <option value="">-- Poliklinik Seçin --</option>
+                        <option value="goz">Göz Hastalıkları</option>
+                        <option value="kardiyo">Kardiyoloji</option>
+                        <option value="noroloji">Nöroloji</option>
+                        <option value="dahiliye">Dahiliye</option>
+                    </select>
+
+                    <select id="docSelect" disabled required>
+                        <option value="">-- Önce Bölüm Seçin --</option>
+                    </select>
+
+                    <label for="appDate"
+                        style="font-size: 12px; color: #7f8c8d; margin-bottom: 5px; display: block;">Tarih
+                        Seçiniz:</label>
+                    <input type="date" id="appDate" required>
+
+                    <select id="timeSelect" required>
+                        <option value="">-- Saat Seçin --</option>
+                        <option value="09:00">09:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                    </select>
+                    <button type="submit" class="btn" style="width:100%">RANDEVUYU ONAYLA</button>
+                </form>
+
+                <!-- Başarı Mesajı -->
+                <div id="appointmentSuccess " role="alert"
+                    style="display: none; text-align: center; border: 2px solid #2ecc71; padding: 25px; border-radius: 10px; background: #f9fffb;">
+                    <h3 style="color: #27ae60;">✅ Randevunuz Onaylandı</h3>
+                    <div id="summaryText" style="text-align: left; margin: 15px 0; font-size: 14px; line-height: 1.6;">
+                    </div>
+                    <button onclick="location.reload()" class="btn" style="width: 100%;">Yeni Randevu Al</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Randevu Formu Bittiği Yer -->
+    </form>
+
+    <!-- Onay ve Geri Bildirim Ekranı -->
+    <div id="appointmentSuccess" role="alert"
+        style="display: none; text-align: center; border: 2px solid #2ecc71; padding: 25px; border-radius: 10px; background: #f9fffb; margin-top: 20px;">
+        <h3 style="color: #27ae60;">✅ Randevunuz Başarıyla Oluşturuldu</h3>
+        <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
+        <div id="summaryText"
+            style="text-align: left; margin-bottom: 20px; font-size: 15px; line-height: 1.8; color: #2c3e50;">
+            <!-- Bilgiler JS ile buraya basılacak -->
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button onclick="location.reload()" class="btn" style="width: 100%; background-color: #3498db;">Yeni Randevu
+                Al</button>
+            <a href="index.html" class="btn outline"
+                style="width: 100%; border: 1px solid #3498db; color: #3498db; text-align: center; text-decoration: none; padding-top: 12px; font-weight: bold;">Ana
+                Sayfaya Dön</a>
+        </div>
+    </div>
+
+    <!-- Sağ Tık Popup -->
+    <div id="custom-popup" class="popup-hidden">
+        <div class="popup-content">
+            <p>⚠️ Bilgi Güvenliği</p>
+            <span>İçerik kopyalamak yasaktır.</span>
+            <button onclick="closePopup()">Kapat</button>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
