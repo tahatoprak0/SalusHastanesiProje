@@ -194,6 +194,6 @@ footer {
 
 /* --- ERİŞİLEBİLİRLİK İÇİN ODAK ÇERÇEVESİ (Hoca sorarsa eklersin) --- */
 :focus {
-    outline: 3px solid #3498db;
+    outline: 3px solid #547A95;
     outline-offset: 2px;
 }

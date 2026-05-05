@@ -111,6 +111,61 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalBio = document.getElementById('modal-bio');
     const modalImage = document.querySelector('#doctor-modal .modal-image img');
 
+    // Per-doktor detaylı bilgiler (isim küçük harfe çevrilerek eşleştiriliyor)
+    const doctorDetails = {
+        'dr. ahmet yılmaz': {
+            bio: 'Göz Hastalıkları uzmanı. 15 yıllık deneyimiyle katarakt ve retina cerrahisi alanında hastalarına hizmet vermektedir.',
+            education: ['İstanbul Tıp Fakültesi, 2006', 'Göz Hastalıkları Uzmanlık Eğitimi, 2012'],
+            previous: ['Şişli Göz Hastanesi (2012-2017)', 'Bakırköy Göz Merkezi (2017-2021)']
+        },
+        'dr. ali gürlek': {
+            bio: 'Göz Hastalıkları uzmanı. Kontakt lens ve refraktif cerrahi konularında uzmandır.',
+            education: ['Ankara Üniversitesi Tıp Fakültesi, 2008', 'Refraktif Cerrahi Eğitimi, 2014'],
+            previous: ['Ankara Göz Kliniği (2014-2018)', 'Özel Göz Hastanesi (2018-2024)']
+        },
+        'dr. ayşe demir': {
+            bio: 'Kardiyoloji uzmanı. Koroner hastalıkların tanı ve tedavisinde tecrübelidir.',
+            education: ['Ege Üniversitesi Tıp Fakültesi, 2005', 'Kardiyoloji Uzmanlık, 2011'],
+            previous: ['Ege Kalp Merkezi (2011-2016)', 'İzmir Kardiyoloji Enstitüsü (2016-2022)']
+        },
+        'dr. serpil yıldız': {
+            bio: 'Kardiyoloji uzmanı. Kalp yetmezliği ve ileri görüntüleme alanlarında çalışmaktadır.',
+            education: ['Hacettepe Üniversitesi Tıp Fakültesi, 2007', 'Gelişmiş Görüntüleme Sertifikası, 2015'],
+            previous: ['Ankara Kalp Hastanesi (2012-2019)', 'Özel Kalp Merkezi (2019-2023)']
+        },
+        'dr. adile ulucan': {
+            bio: 'Nöroloji uzmanı. Baş ağrısı ve nörodejeneratif hastalıklar üzerine uzmanlaşmıştır.',
+            education: ['Marmara Üniversitesi Tıp Fakültesi, 2004', 'Nöroloji Uzmanlık, 2010'],
+            previous: ['Marmara Nöroloji (2010-2015)', 'İstanbul Nöro Merkezi (2015-2022)']
+        },
+        'dr. huseyin aktepe': {
+            bio: 'Nöroloji uzmanı. Epilepsi ve nörolojik rehabilitasyon tedavilerinde deneyimlidir.',
+            education: ['Dokuz Eylül Üniversitesi Tıp Fakültesi, 2006', 'Epilepsi ve Rehabilitasyon Sertifikası, 2013'],
+            previous: ['İzmir Nöroloji Hastanesi (2013-2018)', 'Özel Rehabilitasyon Merkezi (2018-2024)']
+        },
+        'dr. gürbüz haşimoğlu': {
+            bio: 'Dahiliye uzmanı. İç hastalıkları, kronik hastalık yönetimi ve metabolik bozukluklar konusunda uzmandır.',
+            education: ['GATA Tıp Fakültesi, 2003', 'Dahiliye Uzmanlık, 2009'],
+            previous: ['Merkez Hastanesi Dahiliye (2009-2015)', 'Şehir Hastanesi (2015-2022)']
+        },
+        'dr. nebahat mavili': {
+            bio: 'Dahiliye uzmanı. Diyabet ve hormon dengesizlikleri üzerine hastalarına bütüncül bakım sunmaktadır.',
+            education: ['Ankara Üniversitesi Tıp Fakültesi, 2009', 'Endokrinoloji İleri Eğitim, 2016'],
+            previous: ['Ankara Endokrin Merkezi (2016-2020)', 'Özel İç Hastalıkları Kliniği (2020-2024)']
+        }
+    };
+    // Normalize strings (remove diacritics, dots, extra spaces) for robust lookup
+    const normalize = s => s
+        .toLowerCase()
+        .replace(/\./g, '')
+        .normalize('NFD').replace(/\p{Diacritic}/gu, '')
+        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    const normalizedDoctorDetails = {};
+    Object.keys(doctorDetails).forEach(k => { normalizedDoctorDetails[normalize(k)] = doctorDetails[k]; });
+
     document.querySelectorAll('.doctor-card').forEach(card => {
         card.style.cursor = 'pointer';
         card.addEventListener('click', () => {
@@ -119,7 +174,22 @@ document.addEventListener('DOMContentLoaded', function () {
             const img = card.querySelector('.dr-image img')?.getAttribute('src') || '';
             modalTitle.textContent = name;
             modalDept.textContent = dept;
-            modalBio.textContent = 'Uzmanlık ve özgeçmiş bilgisi burada gösterilecektir. (Örnek içerik)';
+            const key = name.trim();
+            const normKey = normalize(key);
+            const details = normalizedDoctorDetails[normKey];
+            if (details) {
+                modalBio.innerHTML = `
+                    <p>${details.bio}</p>
+                    <div class="modal-section"><strong>Eğitim</strong>
+                        <ul>${details.education.map(e => `<li>${e}</li>`).join('')}</ul>
+                    </div>
+                    <div class="modal-section"><strong>Çalıştığı Hastaneler</strong>
+                        <ul>${details.previous.map(p => `<li>${p}</li>`).join('')}</ul>
+                    </div>
+                `;
+            } else {
+                modalBio.innerHTML = `<p>Uzmanlık: ${dept}. Detaylı özgeçmiş yakında eklenecek.</p>`;
+            }
             if (modalImage) {
                 modalImage.setAttribute('src', img);
                 modalImage.setAttribute('alt', name);
