@@ -1,11 +1,9 @@
 .hero-section {
     min-height: 90vh;
-    /* Kaydırmanın devam etmesi için bu kalsın */
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    /* ÖNEMLİ: Resim ismini tırnak içinde yaz ve yolun doğruluğunu kontrol et */
     background: url('../photo/ChatGPT Image 23 Nis 2026 16_47_15.png') center/cover no-repeat;
     overflow: hidden;
 }
@@ -17,7 +15,7 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    /* Resmin üzerine hafif karartma ekler */
+
     z-index: 1;
 }
 

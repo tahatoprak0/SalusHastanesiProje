@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // --- 1. LOADING BAR ÇÖZÜMÜ ---
+
     const lb = document.getElementById('loading-bar');
     if (lb) {
         lb.style.width = '100%';
         setTimeout(() => { lb.style.display = 'none'; }, 400);
     }
-    // HTML'deki formu JavaScript'e tanıtıyoruz
 
 
     const doktorData = {
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const timeSelect = getEl('timeSelect');
     const appForm = getEl('appointmentForm');
 
-    // --- 2. TARİH VE DOKTOR MANTIĞI ---
     if (appDateInput) {
         const today = new Date().toISOString().split('T')[0];
         const maxDate = new Date();
@@ -40,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
         Array.from(timeSelect.options).forEach(opt => {
             if (opt.value === "") return;
 
-            // Önce saatin yanındaki eski "(DOLU)" yazılarını temizle
             const originalTime = opt.value;
 
             const isTaken = saved.some(a =>
@@ -51,10 +48,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (isTaken) {
                 opt.disabled = true;
-                opt.textContent = originalTime + " (DOLU)"; // Sadece bir kez ekler
+                opt.textContent = originalTime + " (DOLU)";
             } else {
                 opt.disabled = false;
-                opt.textContent = originalTime; // Dolu değilse orijinal haline döner
+                opt.textContent = originalTime;
             }
         });
     }
@@ -76,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
     appDateInput?.addEventListener('change', updateTimes);
     docSelect?.addEventListener('change', updateTimes);
 
-    // --- 3. RANDEVU KAYDETME ---
     appForm?.addEventListener('submit', function (e) {
         e.preventDefault();
         const data = { doctor: docSelect.value, date: appDateInput.value, time: timeSelect.value, tc: getEl('tc')?.value || "Girilmedi" };
@@ -90,7 +86,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (summary) summary.innerHTML = `<strong>Doktor:</strong> ${data.doctor}<br><strong>Tarih:</strong> ${data.date}<br><strong>Saat:</strong> ${data.time}`;
     });
 
-    // --- 4. POLİKLİNİK FİLTRE (URL PARAM) ---
     const secilenBolum = new URLSearchParams(window.location.search).get('bolum');
     if (secilenBolum) {
         document.querySelectorAll('.doctor-card').forEach(k => {
@@ -98,11 +93,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- 5. SAĞ TIK VE POPUP ---
     document.addEventListener('contextmenu', e => { e.preventDefault(); getEl('custom-popup')?.classList.remove('popup-hidden'); });
     window.closePopup = () => getEl('custom-popup')?.classList.add('popup-hidden');
 
-    // --- 6. DOKTOR MODAL ---
     const doctorModal = document.getElementById('doctor-modal');
     const modalOverlay = document.querySelector('#doctor-modal .modal-overlay');
     const modalClose = document.getElementById('modal-close');
@@ -111,7 +104,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalBio = document.getElementById('modal-bio');
     const modalImage = document.querySelector('#doctor-modal .modal-image img');
 
-    // Per-doktor detaylı bilgiler (isim küçük harfe çevrilerek eşleştiriliyor)
     const doctorDetails = {
         'dr. ahmet yılmaz': {
             bio: 'Göz Hastalıkları uzmanı. 15 yıllık deneyimiyle katarakt ve retina cerrahisi alanında hastalarına hizmet vermektedir.',
@@ -154,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function () {
             previous: ['Ankara Endokrin Merkezi (2016-2020)', 'Özel İç Hastalıkları Kliniği (2020-2024)']
         }
     };
-    // Normalize strings (remove diacritics, dots, extra spaces) for robust lookup
+
     const normalize = s => s
         .toLowerCase()
         .replace(/\./g, '')
@@ -208,28 +200,26 @@ document.addEventListener('DOMContentLoaded', function () {
     modalOverlay?.addEventListener('click', closeDoctorModal);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDoctorModal(); });
 });
-// --- FOOTER GERİ BİLDİRİM FORMU İŞLEME ---
+
 const fbForm = document.getElementById('footerFeedbackForm');
 if (fbForm) {
     fbForm.addEventListener('submit', function (e) {
-        e.preventDefault(); // Sayfanın yenilenmesini engelle
+        e.preventDefault();
 
         const btn = fbForm.querySelector('.btn-footer');
         const email = document.getElementById('fbEmail')?.value;
 
-        // Kullanıcıya geri bildirim ver
         if (btn) {
             btn.textContent = "Gönderildi ✅";
             btn.style.backgroundColor = "#27ae60";
             btn.disabled = true;
         }
 
-        // İstersen bir alert ile de onay verebilirsin
         setTimeout(() => {
             alert("Teşekkürler! Mesajınız başarıyla iletildi. En kısa sürede " + email + " adresine dönüş yapacağız.");
-            fbForm.reset(); // Formu temizle
+            fbForm.reset();
             btn.textContent = "Gönder";
-            btn.style.backgroundColor = "#3498db";
+            btn.style.backgroundColor = "#547A95";
             btn.disabled = false;
         }, 500);
     });
