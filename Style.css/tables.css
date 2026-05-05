@@ -36,6 +36,13 @@
     border-radius: 10px;
     text-align: center;
     border: 1px solid #eee;
+    box-shadow: 0 6px 18px rgba(44, 57, 71, 0.08);
+    transition: box-shadow 200ms ease, transform 200ms ease;
+}
+
+.doctor-card:hover {
+    box-shadow: 0 14px 36px rgba(44, 57, 71, 0.12);
+    transform: translateY(-6px);
 }
 
 .dr-image {

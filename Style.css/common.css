@@ -14,7 +14,7 @@ body {
 
 /* --- 2. NAVİGASYON (ÜST BAR) --- */
 nav {
-    background: #2c3e50;
+    background: #E8EDF2;
     height: 80px;
     display: flex;
     align-items: center;
@@ -38,7 +38,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #3498db;
+    color: #2C3947;
     font-size: 22px;
     font-weight: 800;
     text-decoration: none;
@@ -51,7 +51,7 @@ nav {
 }
 
 .menu-links a {
-    color: #fff;
+    color: #2C3947;
     text-decoration: none;
     margin-left: 25px;
     font-weight: 600;
@@ -60,7 +60,7 @@ nav {
 }
 
 .menu-links a:hover {
-    color: #3498db;
+    color: #547A95;
 }
 
 /* --- 3. KURUMSAL FOOTER --- */
@@ -87,7 +87,7 @@ footer {
 }
 
 .footer-section h3 {
-    color: #3498db;
+    color: #C2A56D;
     margin-bottom: 25px;
     font-size: 1.3rem;
     font-weight: 700;
@@ -118,7 +118,7 @@ footer {
 
 .footer-links a:hover {
     opacity: 1;
-    color: #3498db;
+    color: #C2A56D;
     padding-left: 5px;
 }
 
@@ -143,7 +143,7 @@ footer {
 
 .btn-footer {
     width: 100%;
-    background: #3498db;
+    background: #547A95;
     color: #fff;
     border: none;
     padding: 14px;
@@ -165,7 +165,7 @@ footer {
 .btn {
     display: inline-block;
     padding: 12px 28px;
-    background-color: #3498db;
+    background-color: #547A95;
     color: #ffffff !important;
     text-decoration: none;
     font-weight: 700;
@@ -185,7 +185,7 @@ footer {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     z-index: 9999;
     text-align: center;
-    border-top: 5px solid #3498db;
+    border-top: 5px solid #547A95;
 }
 
 .popup-hidden {
