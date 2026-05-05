@@ -101,6 +101,42 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- 5. SAĞ TIK VE POPUP ---
     document.addEventListener('contextmenu', e => { e.preventDefault(); getEl('custom-popup')?.classList.remove('popup-hidden'); });
     window.closePopup = () => getEl('custom-popup')?.classList.add('popup-hidden');
+
+    // --- 6. DOKTOR MODAL ---
+    const doctorModal = document.getElementById('doctor-modal');
+    const modalOverlay = document.querySelector('#doctor-modal .modal-overlay');
+    const modalClose = document.getElementById('modal-close');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDept = document.getElementById('modal-dept');
+    const modalBio = document.getElementById('modal-bio');
+    const modalImage = document.querySelector('#doctor-modal .modal-image img');
+
+    document.querySelectorAll('.doctor-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+            const name = card.querySelector('h3')?.textContent || '';
+            const dept = card.querySelector('.dr-dept')?.textContent || '';
+            const img = card.querySelector('.dr-image img')?.getAttribute('src') || '';
+            modalTitle.textContent = name;
+            modalDept.textContent = dept;
+            modalBio.textContent = 'Uzmanlık ve özgeçmiş bilgisi burada gösterilecektir. (Örnek içerik)';
+            if (modalImage) {
+                modalImage.setAttribute('src', img);
+                modalImage.setAttribute('alt', name);
+            }
+            doctorModal?.classList.remove('modal-hidden');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    const closeDoctorModal = () => {
+        doctorModal?.classList.add('modal-hidden');
+        document.body.style.overflow = '';
+    };
+
+    modalClose?.addEventListener('click', closeDoctorModal);
+    modalOverlay?.addEventListener('click', closeDoctorModal);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDoctorModal(); });
 });
 // --- FOOTER GERİ BİLDİRİM FORMU İŞLEME ---
 const fbForm = document.getElementById('footerFeedbackForm');

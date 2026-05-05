@@ -76,6 +76,21 @@
             <button onclick="closePopup()">Anladım</button>
         </div>
     </div>
+    <!-- Doktor detay modal -->
+    <div id="doctor-modal" class="modal-hidden">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close" id="modal-close" aria-label="Kapat">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image"><img src="" alt="Doktor fotoğrafı"></div>
+                <div class="modal-info">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-dept" class="dr-dept"></p>
+                    <p id="modal-bio"></p>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="../js/script.js"></script>
 </body>
 
